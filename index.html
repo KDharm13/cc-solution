@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Cloud-Based Application Deployment, API & Microservices — practical question bank solutions.">
+<title>Cloud Deployment — Practical Solutions</title>
+<style>
+:root{--bg:#f5f7fb;--card:#fff;--ink:#182230;--muted:#5c6677;--accent:#3157d5;--line:#e2e7f0;--code:#101827}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,-apple-system,Segoe UI,Roboto,Arial}
+header{background:linear-gradient(130deg,#15264d,#3157d5);color:#fff;padding:42px 20px 34px}.hero{max-width:1100px;margin:auto}.eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:.75rem;opacity:.8;font-weight:700}
+header h1{font-size:clamp(2rem,4vw,3rem);line-height:1.15;margin:.5rem 0}header p{max-width:760px;opacity:.9;margin:.6rem 0 1.2rem}.actions{display:flex;gap:10px;flex-wrap:wrap}.btn{display:inline-block;padding:10px 15px;border-radius:10px;text-decoration:none;font-weight:700;background:#fff;color:#1d3478}.btn.secondary{background:#ffffff20;color:#fff;border:1px solid #ffffff55}
+.layout{max-width:1100px;margin:26px auto;padding:0 18px;display:grid;grid-template-columns:250px minmax(0,1fr);gap:22px}
+aside{align-self:start;position:sticky;top:18px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;max-height:calc(100vh - 36px);overflow:auto}aside h2{font-size:.95rem;margin:0 0 10px}aside a{display:block;color:var(--muted);text-decoration:none;padding:5px 0;font-size:.9rem}aside a:hover{color:var(--accent)}
+main{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:clamp(18px,3vw,38px);min-width:0;box-shadow:0 8px 30px #192b4b08}
+main h1{font-size:1.7rem}main h2{font-size:1.35rem;margin:2rem 0 .7rem;padding-bottom:.35rem;border-bottom:1px solid var(--line)}main h3{font-size:1.1rem;margin:1.4rem 0 .5rem}
+p{margin:.5rem 0 1rem}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;background:#eef2ff;padding:.12em .35em;border-radius:5px;font-size:.92em}
+pre{background:var(--code);color:#e8eefb;padding:16px;border-radius:12px;overflow:auto;line-height:1.55;font-size:.9rem}pre code{background:none;padding:0;color:inherit}
+.table-wrap{overflow-x:auto;margin:1rem 0}table{border-collapse:collapse;width:100%;font-size:.93rem}th,td{text-align:left;vertical-align:top;border:1px solid var(--line);padding:9px 11px}th{background:#f0f4ff}
+.search{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:9px;margin:0 0 12px;font:inherit}footer{text-align:center;padding:22px;color:var(--muted);font-size:.85rem}
+@media(max-width:780px){.layout{grid-template-columns:1fr}aside{position:static;max-height:none}}
+</style></head><body>
+<header><div class="hero"><div class="eyebrow">Practical Question Bank · 75 Questions</div>
+<h1>Cloud-Based Application Deployment,<br>API &amp; Microservices</h1>
+<p>Complete practical solutions for virtual environments, package management, serialization, Git/GitHub, and FastAPI.</p>
+<div class="actions"><a class="btn" href="CC_Solutions.docx" download>Download original DOCX</a><a class="btn secondary" href="#solutions">Read solutions</a></div></div></header>
+<div class="layout"><aside><h2>On this page</h2><input class="search" id="search" placeholder="Search this page…" aria-label="Search solutions"><nav id="nav"></nav></aside>
+<main id="solutions"><h1>Cloud-Based Application Deployment, API &amp; Microservices</h1>
+<p>Complete Practical Question Bank — Solutions</p>
+<p>K.S. School of Business Management &amp; IT, Gujarat University — M.Sc. (CA &amp; IT)</p>
+<p>This document covers all 75 questions from the question bank, organized by topic, with ready-to-run commands and code.</p>
+<h2>Topic 1: Virtual Environments &amp; Package Management (Q1–30)</h2>
+<h2>Exam tip: Questions 1-30 are almost always asked live -- practice typing 7, 9, 14, 25, 26, 28 from memory since those trip people up most.</h2>
+<h2>Topic 2: Serialization &amp; Deserialization (Q31–34)</h2>
+<p>Pattern for all four: build/train a structure or model -&gt; serialize with both pickle and joblib -&gt; deserialize -&gt; print/predict.</p>
+<h3>Q31 — List of 10 student names</h3>
+<p>import pickle</p>
+<p>import joblib</p>
+<p># (a) Create data structure</p>
+<p>students = [&quot;Aarav&quot;, &quot;Diya&quot;, &quot;Krupesh&quot;, &quot;Meera&quot;, &quot;Rohan&quot;,</p>
+<p>&quot;Isha&quot;, &quot;Kabir&quot;, &quot;Ananya&quot;, &quot;Yash&quot;, &quot;Priya&quot;]</p>
+<p># (b) Serialize with pickle</p>
+<p>with open(&quot;students.pkl&quot;, &quot;wb&quot;) as f:</p>
+<p>pickle.dump(students, f)</p>
+<p># Serialize with joblib</p>
+<p>joblib.dump(students, &quot;students.joblib&quot;)</p>
+<p># Deserialize with pickle</p>
+<p>with open(&quot;students.pkl&quot;, &quot;rb&quot;) as f:</p>
+<p>loaded_pkl = pickle.load(f)</p>
+<p># Deserialize with joblib</p>
+<p>loaded_joblib = joblib.load(&quot;students.joblib&quot;)</p>
+<p># (c) Print</p>
+<p>print(&quot;From pickle:&quot;, loaded_pkl)</p>
+<p>print(&quot;From joblib:&quot;, loaded_joblib)</p>
+<h3>Q32 — Classification on Iris dataset</h3>
+<p>import pickle</p>
+<p>import joblib</p>
+<p>from sklearn.datasets import load_iris</p>
+<p>from sklearn.tree import DecisionTreeClassifier</p>
+<p># (a) Train a small model</p>
+<p>iris = load_iris()</p>
+<p>X, y = iris.data, iris.target</p>
+<p>model = DecisionTreeClassifier()</p>
+<p>model.fit(X, y)</p>
+<p># (b) Serialize</p>
+<p>with open(&quot;iris_model.pkl&quot;, &quot;wb&quot;) as f:</p>
+<p>pickle.dump(model, f)</p>
+<p>joblib.dump(model, &quot;iris_model.joblib&quot;)</p>
+<p># Deserialize</p>
+<p>with open(&quot;iris_model.pkl&quot;, &quot;rb&quot;) as f:</p>
+<p>model_pkl = pickle.load(f)</p>
+<p>model_joblib = joblib.load(&quot;iris_model.joblib&quot;)</p>
+<p># (c) Predict + print</p>
+<p>new_sample = [[5.1, 3.5, 1.4, 0.2]]</p>
+<p>pred = model_pkl.predict(new_sample)</p>
+<p>print(&quot;Predicted species (pickle model):&quot;, iris.target_names[pred[0]])</p>
+<p>print(&quot;Predicted species (joblib model):&quot;, iris.target_names[model_joblib.predict(new_sample)[0]])</p>
+<h3>Q33 — Regression on Package dataset (CGPA, IQ → Package)</h3>
+<p>import pickle</p>
+<p>import joblib</p>
+<p>import pandas as pd</p>
+<p>from sklearn.linear_model import LinearRegression</p>
+<p># (a) Small sample dataset + train</p>
+<p>data = pd.DataFrame({</p>
+<p>&quot;CGPA&quot;: [6.5, 7.2, 8.0, 8.5, 9.1, 6.0, 7.8, 8.9],</p>
+<p>&quot;IQ&quot;:   [100, 105, 110, 115, 120, 95, 108, 118],</p>
+<p>&quot;Package&quot;: [3.0, 3.6, 4.2, 4.8, 5.5, 2.7, 4.0, 5.2]</p>
+<p>})</p>
+<p>X = data[[&quot;CGPA&quot;, &quot;IQ&quot;]]</p>
+<p>y = data[&quot;Package&quot;]</p>
+<p>model = LinearRegression()</p>
+<p>model.fit(X, y)</p>
+<p># (b) Serialize</p>
+<p>with open(&quot;package_model.pkl&quot;, &quot;wb&quot;) as f:</p>
+<p>pickle.dump(model, f)</p>
+<p>joblib.dump(model, &quot;package_model.joblib&quot;)</p>
+<p># Deserialize</p>
+<p>with open(&quot;package_model.pkl&quot;, &quot;rb&quot;) as f:</p>
+<p>model_pkl = pickle.load(f)</p>
+<p>model_joblib = joblib.load(&quot;package_model.joblib&quot;)</p>
+<p># (c) Predict + print</p>
+<p>new_sample = [[8.2, 112]]</p>
+<p>print(&quot;Predicted package (pickle):&quot;, model_pkl.predict(new_sample)[0])</p>
+<p>print(&quot;Predicted package (joblib):&quot;, model_joblib.predict(new_sample)[0])</p>
+<h3>Q34 — Classification on Placement dataset (CGPA, IQ → Placed/Not Placed)</h3>
+<p>import pickle</p>
+<p>import joblib</p>
+<p>import pandas as pd</p>
+<p>from sklearn.linear_model import LogisticRegression</p>
+<p># (a) Small sample dataset + train (0 = placed, 1 = not placed)</p>
+<p>data = pd.DataFrame({</p>
+<p>&quot;CGPA&quot;: [6.5, 7.2, 8.0, 5.5, 9.1, 6.0, 7.8, 5.0],</p>
+<p>&quot;IQ&quot;:   [100, 105, 110, 90, 120, 95, 108, 85],</p>
+<p>&quot;Placed&quot;: [0, 0, 0, 1, 0, 1, 0, 1]</p>
+<p>})</p>
+<p>X = data[[&quot;CGPA&quot;, &quot;IQ&quot;]]</p>
+<p>y = data[&quot;Placed&quot;]</p>
+<p>model = LogisticRegression()</p>
+<p>model.fit(X, y)</p>
+<p># (b) Serialize</p>
+<p>with open(&quot;placement_model.pkl&quot;, &quot;wb&quot;) as f:</p>
+<p>pickle.dump(model, f)</p>
+<p>joblib.dump(model, &quot;placement_model.joblib&quot;)</p>
+<p># Deserialize</p>
+<p>with open(&quot;placement_model.pkl&quot;, &quot;rb&quot;) as f:</p>
+<p>model_pkl = pickle.load(f)</p>
+<p>model_joblib = joblib.load(&quot;placement_model.joblib&quot;)</p>
+<p># (c) Predict + print</p>
+<p>new_sample = [[7.0, 102]]</p>
+<p>result = model_pkl.predict(new_sample)[0]</p>
+<p>print(&quot;Prediction (pickle):&quot;, &quot;Placed&quot; if result == 0 else &quot;Not Placed&quot;)</p>
+<p>print(&quot;Prediction (joblib):&quot;, &quot;Placed&quot; if model_joblib.predict(new_sample)[0] == 0 else &quot;Not Placed&quot;)</p>
+<h2>Exam tip: The examiner mainly checks that you use open(...,&quot;wb&quot;)/&quot;rb&quot; correctly for pickle vs. joblib.dump/load (no manual file handling needed for joblib), and that you can predict on a new sample afterward.</h2>
+<h2>Topic 3: Git / GitHub Commands (Q35–64)</h2>
+<h2>Exam tip: 44/45/46 (remote setup), 53/54/55 (push variants), and 61/62 (branch deletion) are the most commonly mixed up -- review those twice.</h2>
+<h2>Topic 4: API Development with FastAPI (Q65–75)</h2>
+<p>Every question needs the same five things: (1) GET all + DELETE by id, raising HTTPException if not found; (2) a computed field + a GET /sorted endpoint; (3) POST with Pydantic validation, raising the specified status code on duplicate/invalid; (4) verify everything in Swagger UI at http://127.0.0.1:8000/docs; (5) use Path(..., description=..., example=...) on path parameters.</p>
+<p>Run any file below with: uvicorn filename:app --reload, then open /docs in your browser.</p>
+<h3>Q65 — books.json</h3>
+<p>Fully explained template — this is the one to memorize; every other dataset follows the same skeleton.</p>
+<p>from fastapi import FastAPI, HTTPException, Path</p>
+<p>from pydantic import BaseModel, Field</p>
+<p>import json, os</p>
+<p>app = FastAPI()</p>
+<p>FILE = &quot;books.json&quot;</p>
+<p>def load_data():</p>
+<p>if not os.path.exists(FILE):</p>
+<p>return []</p>
+<p>with open(FILE, &quot;r&quot;) as f:</p>
+<p>return json.load(f)</p>
+<p>def save_data(data):</p>
+<p>with open(FILE, &quot;w&quot;) as f:</p>
+<p>json.dump(data, f, indent=4)</p>
+<p>class Book(BaseModel):</p>
+<p>id: int</p>
+<p>title: str = Field(..., description=&quot;Title of the book&quot;, example=&quot;Atomic Habits&quot;)</p>
+<p>author: str = Field(..., description=&quot;Author of the book&quot;, example=&quot;James Clear&quot;)</p>
+<p>price: float = Field(..., gt=0, description=&quot;Price of the book&quot;, example=499.0)</p>
+<p>available: bool = Field(..., description=&quot;Whether the book is in stock&quot;, example=True)</p>
+<p>@app.get(&quot;/books&quot;)</p>
+<p>def get_books():</p>
+<p>return load_data()</p>
+<p>@app.delete(&quot;/books/{book_id}&quot;)</p>
+<pre><code>def delete_book(book_id: int = Path(..., description=&quot;ID of the book to delete&quot;, example=1)):</code></pre>
+<p>books = load_data()</p>
+<p>for b in books:</p>
+<p>if b[&quot;id&quot;] == book_id:</p>
+<p>books.remove(b)</p>
+<p>save_data(books)</p>
+<p>return {&quot;message&quot;: f&quot;Book {book_id} deleted&quot;}</p>
+<p>raise HTTPException(status_code=404, detail=&quot;Book not found&quot;)</p>
+<p>@app.get(&quot;/books/sorted&quot;)</p>
+<p>def get_books_sorted():</p>
+<p>books = load_data()</p>
+<p>for b in books:</p>
+<p>b[&quot;discount&quot;] = round(b[&quot;price&quot;] * 0.10, 2)</p>
+<p>books.sort(key=lambda x: x[&quot;discount&quot;], reverse=True)</p>
+<p>return books</p>
+<p>@app.post(&quot;/books&quot;)</p>
+<p>def add_book(book: Book):</p>
+<p>books = load_data()</p>
+<p>if any(b[&quot;id&quot;] == book.id for b in books):</p>
+<p>raise HTTPException(status_code=400, detail=&quot;Book already exists&quot;)</p>
+<p>books.append(book.dict())</p>
+<p>save_data(books)</p>
+<p>print(&quot;Book added successfully:&quot;, book.title)</p>
+<p>return {&quot;message&quot;: &quot;Book added successfully&quot;, &quot;book&quot;: book}</p>
+<h3>Q66 — movies.json</h3>
+<p>from fastapi import FastAPI, HTTPException, Path</p>
+<p>from pydantic import BaseModel, Field</p>
+<p>import json, os</p>
+<p>app = FastAPI()</p>
+<p>FILE = &quot;movies.json&quot;</p>
+<p>def load_data():</p>
+<p>if not os.path.exists(FILE):</p>
+<p>return []</p>
+<p>with open(FILE, &quot;r&quot;) as f:</p>
+<p>return json.load(f)</p>
+<p>def save_data(data):</p>
+<p>with open(FILE, &quot;w&quot;) as f:</p>
+<p>json.dump(data, f, indent=4)</p>
+<p>class Movie(BaseModel):</p>
+<p>id: int</p>
+<p>title: str = Field(..., description=&quot;Movie title&quot;, example=&quot;Inception&quot;)</p>
+<p>director: str = Field(..., description=&quot;Director&#x27;s name&quot;, example=&quot;Christopher Nolan&quot;)</p>
+<p>rating: float = Field(..., ge=0, le=10, description=&quot;Rating out of 10&quot;, example=8.8)</p>
+<p>duration_minutes: int = Field(..., gt=0, description=&quot;Duration in minutes&quot;, example=148)</p>
+<p>@app.get(&quot;/movies&quot;)</p>
+<p>def get_movies():</p>
+<p>return load_data()</p>
+<p>@app.delete(&quot;/movies/{movie_id}&quot;)</p>
+<pre><code>def delete_movie(movie_id: int = Path(..., description=&quot;ID of movie to delete&quot;, example=1)):</code></pre>
+<p>movies = load_data()</p>
+<p>for m in movies:</p>
+<p>if m[&quot;id&quot;] == movie_id:</p>
+<p>movies.remove(m)</p>
+<p>save_data(movies)</p>
+<p>return {&quot;message&quot;: f&quot;Movie {movie_id} deleted&quot;}</p>
+<p>raise HTTPException(status_code=404, detail=&quot;Movie not found&quot;)</p>
+<p>@app.get(&quot;/movies/sorted&quot;)</p>
+<p>def get_movies_sorted():</p>
+<p>movies = load_data()</p>
+<p>for m in movies:</p>
+<p>m[&quot;popularity_score&quot;] = m[&quot;rating&quot;] * 10</p>
+<p>movies.sort(key=lambda x: x[&quot;popularity_score&quot;])</p>
+<p>return movies</p>
+<p>@app.post(&quot;/movies&quot;)</p>
+<p>def add_movie(movie: Movie):</p>
+<p>movies = load_data()</p>
+<p>if any(m[&quot;id&quot;] == movie.id for m in movies):</p>
+<p>raise HTTPException(status_code=409, detail=&quot;Movie already exists&quot;)</p>
+<p>movies.append(movie.dict())</p>
+<p>save_data(movies)</p>
+<p>print(&quot;Movie added successfully:&quot;, movie.title)</p>
+<p>return {&quot;message&quot;: &quot;Movie added successfully&quot;, &quot;movie&quot;: movie}</p>
+<h3>Q67 — orders.json</h3>
+<p>from fastapi import FastAPI, HTTPException, Path</p>
+<p>from pydantic import BaseModel, Field</p>
+<p>import json, os</p>
+<p>app = FastAPI()</p>
+<p>FILE = &quot;orders.json&quot;</p>
+<p>def load_data():</p>
+<p>if not os.path.exists(FILE):</p>
+<p>return []</p>
+<p>with open(FILE, &quot;r&quot;) as f:</p>
+<p>return json.load(f)</p>
+<p>def save_data(data):</p>
+<p>with open(FILE, &quot;w&quot;) as f:</p>
+<p>json.dump(data, f, indent=4)</p>
+<p>class Order(BaseModel):</p>
+<p>id: int</p>
+<p>customer_name: str = Field(..., description=&quot;Customer&#x27;s name&quot;, example=&quot;Krupesh Patel&quot;)</p>
+<p>item: str = Field(..., description=&quot;Item ordered&quot;, example=&quot;Laptop Stand&quot;)</p>
+<p>quantity: int = Field(..., gt=0, description=&quot;Quantity ordered&quot;, example=2)</p>
+<p>unit_price: float = Field(..., gt=0, description=&quot;Price per unit&quot;, example=499.0)</p>
+<p>@app.get(&quot;/orders&quot;)</p>
+<p>def get_orders():</p>
+<p>return load_data()</p>
+<p>@app.delete(&quot;/orders/{order_id}&quot;)</p>
+<pre><code>def delete_order(order_id: int = Path(..., description=&quot;ID of order to delete&quot;, example=1)):</code></pre>
+<p>orders = load_data()</p>
+<p>for o in orders:</p>
+<p>if o[&quot;id&quot;] == order_id:</p>
+<p>orders.remove(o)</p>
+<p>save_data(orders)</p>
+<p>return {&quot;message&quot;: f&quot;Order {order_id} deleted&quot;}</p>
+<p>raise HTTPException(status_code=404, detail=&quot;Order id not found&quot;)</p>
+<p>@app.get(&quot;/orders/sorted&quot;)</p>
+<p>def get_orders_sorted():</p>
+<p>orders = load_data()</p>
+<p>for o in orders:</p>
+<p>o[&quot;total_amount&quot;] = o[&quot;quantity&quot;] * o[&quot;unit_price&quot;]</p>
+<p>orders.sort(key=lambda x: x[&quot;total_amount&quot;], reverse=True)</p>
+<p>return orders</p>
+<p>@app.post(&quot;/orders&quot;)</p>
+<p>def add_order(order: Order):</p>
+<p>orders = load_data()</p>
+<p>if any(o[&quot;id&quot;] == order.id for o in orders):</p>
+<p>raise HTTPException(status_code=400, detail=&quot;Invalid order: id already exists&quot;)</p>
+<p>orders.append(order.dict())</p>
+<p>save_data(orders)</p>
+<p>print(&quot;Order added successfully:&quot;, order.item)</p>
+<p>return {&quot;message&quot;: &quot;Order added successfully&quot;, &quot;order&quot;: order}</p>
+<h3>Q68 — employees.json</h3>
+<p>from fastapi import FastAPI, HTTPException, Path</p>
+<p>from pydantic import BaseModel, Field</p>
+<p>import json, os</p>
+<p>app = FastAPI()</p>
+<p>FILE = &quot;employees.json&quot;</p>
+<p>def load_data():</p>
+<p>if not os.path.exists(FILE):</p>
+<p>return []</p>
+<p>with open(FILE, &quot;r&quot;) as f:</p>
+<p>return json.load(f)</p>
+<p>def save_data(data):</p>
+<p>with open(FILE, &quot;w&quot;) as f:</p>
+<p>json.dump(data, f, indent=4)</p>
+<p>class Employee(BaseModel):</p>
+<p>id: int</p>
+<p>name: str = Field(..., description=&quot;Employee&#x27;s name&quot;, example=&quot;Riya Shah&quot;)</p>
+<p>department: str = Field(..., description=&quot;Department name&quot;, example=&quot;Engineering&quot;)</p>
+<p>salary: float = Field(..., gt=0, description=&quot;Monthly salary&quot;, example=55000.0)</p>
+<p>experience_years: int = Field(..., ge=0, description=&quot;Years of experience&quot;, example=3)</p>
+<p>@app.get(&quot;/employees&quot;)</p>
+<p>def get_employees():</p>
+<p>return load_data()</p>
+<p>@app.delete(&quot;/employees/{employee_id}&quot;)</p>
+<pre><code>def delete_employee(employee_id: int = Path(..., description=&quot;ID of employee to delete&quot;, example=1)):</code></pre>
+<p>employees = load_data()</p>
+<p>for e in employees:</p>
+<p>if e[&quot;id&quot;] == employee_id:</p>
+<p>employees.remove(e)</p>
+<p>save_data(employees)</p>
+<p>return {&quot;message&quot;: f&quot;Employee {employee_id} deleted&quot;}</p>
+<p>raise HTTPException(status_code=404, detail=&quot;Employee not found&quot;)</p>
+<p>@app.get(&quot;/employees/sorted&quot;)</p>
+<p>def get_employees_sorted():</p>
+<p>employees = load_data()</p>
+<p>for e in employees:</p>
+<p>e[&quot;bonus&quot;] = round(e[&quot;salary&quot;] * 0.10, 2)</p>
+<p>employees.sort(key=lambda x: x[&quot;salary&quot;], reverse=True)</p>
+<p>return employees</p>
+<p>@app.post(&quot;/employees&quot;)</p>
+<p>def add_employee(employee: Employee):</p>
+<p>employees = load_data()</p>
+<p>if any(e[&quot;id&quot;] == employee.id for e in employees):</p>
+<p>raise HTTPException(status_code=402, detail=&quot;Employee already exists&quot;)</p>
+<p>employees.append(employee.dict())</p>
+<p>save_data(employees)</p>
+<p>print(&quot;Employee added successfully:&quot;, employee.name)</p>
+<p>return {&quot;message&quot;: &quot;Employee added successfully&quot;, &quot;employee&quot;: employee}</p>
+<h3>Q69 / Q75 — hotels.json</h3>
+<p>This exact question appears twice in the bank (Q69 and Q75).</p>
+<p>from fastapi import FastAPI, HTTPException, Path</p>
+<p>from pydantic import BaseModel, Field</p>
+<p>import json, os</p>
+<p>app = FastAPI()</p>
+<p>FILE = &quot;hotels.json&quot;</p>
+<p>def load_data():</p>
+<p>if not os.path.exists(FILE):</p>
+<p>return []</p>
+<p>with open(FILE, &quot;r&quot;) as f:</p>
+<p>return json.load(f)</p>
+<p>def save_data(data):</p>
+<p>with open(FILE, &quot;w&quot;) as f:</p>
+<p>json.dump(data, f, indent=4)</p>
+<p>class Hotel(BaseModel):</p>
+<p>id: int</p>
+<p>hotel_name: str = Field(..., description=&quot;Hotel name&quot;, example=&quot;Taj Palace&quot;)</p>
+<p>city: str = Field(..., description=&quot;City where hotel is located&quot;, example=&quot;Ahmedabad&quot;)</p>
+<p>price: float = Field(..., gt=0, description=&quot;Price per night&quot;, example=4500.0)</p>
+<p>rating: float = Field(..., ge=0, le=5, description=&quot;Rating out of 5&quot;, example=4.3)</p>
+<p>@app.get(&quot;/hotels&quot;)</p>
+<p>def get_hotels():</p>
+<p>return load_data()</p>
+<p>@app.delete(&quot;/hotels/{hotel_id}&quot;)</p>
+<pre><code>def delete_hotel(hotel_id: int = Path(..., description=&quot;ID of hotel to delete&quot;, example=1)):</code></pre>
+<p>hotels = load_data()</p>
+<p>for h in hotels:</p>
+<p>if h[&quot;id&quot;] == hotel_id:</p>
+<p>hotels.remove(h)</p>
+<p>save_data(hotels)</p>
+<p>return {&quot;message&quot;: f&quot;Hotel {hotel_id} deleted&quot;}</p>
+<p>raise HTTPException(status_code=404, detail=&quot;Hotel id not found&quot;)</p>
+<p>@app.get(&quot;/hotels/sorted&quot;)</p>
+<p>def get_hotels_sorted():</p>
+<p>hotels = load_data()</p>
+<p>for h in hotels:</p>
+<p>h[&quot;price_per_night_with_tax&quot;] = round(h[&quot;price&quot;] * 1.18, 2)</p>
+<p>hotels.sort(key=lambda x: x[&quot;rating&quot;], reverse=True)</p>
+<p>return hotels</p>
+<p>@app.post(&quot;/hotels&quot;)</p>
+<p>def add_hotel(hotel: Hotel):</p>
+<p>hotels = load_data()</p>
+<p>if any(h[&quot;hotel_name&quot;] == hotel.hotel_name and h[&quot;city&quot;] == hotel.city for h in hotels):</p>
+<p>raise HTTPException(status_code=409, detail=&quot;Hotel already exists in this city&quot;)</p>
+<p>hotels.append(hotel.dict())</p>
+<p>save_data(hotels)</p>
+<p>print(&quot;Hotel added successfully:&quot;, hotel.hotel_name)</p>
+<p>return {&quot;message&quot;: &quot;Hotel added successfully&quot;, &quot;hotel&quot;: hotel}</p>
+<h3>Q70 / Q74 — products.json</h3>
+<p>This exact question appears twice in the bank (Q70 and Q74).</p>
+<p>from fastapi import FastAPI, HTTPException, Path</p>
+<p>from pydantic import BaseModel, Field</p>
+<p>import json, os</p>
+<p>app = FastAPI()</p>
+<p>FILE = &quot;products.json&quot;</p>
+<p>def load_data():</p>
+<p>if not os.path.exists(FILE):</p>
+<p>return []</p>
+<p>with open(FILE, &quot;r&quot;) as f:</p>
+<p>return json.load(f)</p>
+<p>def save_data(data):</p>
+<p>with open(FILE, &quot;w&quot;) as f:</p>
+<p>json.dump(data, f, indent=4)</p>
+<p>class Product(BaseModel):</p>
+<p>id: int</p>
+<p>product_name: str = Field(..., description=&quot;Product name&quot;, example=&quot;Wireless Mouse&quot;)</p>
+<p>category: str = Field(..., description=&quot;Product category&quot;, example=&quot;Electronics&quot;)</p>
+<p>stock_quantity: int = Field(..., ge=0, description=&quot;Units in stock&quot;, example=50)</p>
+<p>price: float = Field(..., gt=0, description=&quot;Price per unit&quot;, example=799.0)</p>
+<p>@app.get(&quot;/products&quot;)</p>
+<p>def get_products():</p>
+<p>return load_data()</p>
+<p>@app.delete(&quot;/products/{product_id}&quot;)</p>
+<pre><code>def delete_product(product_id: int = Path(..., description=&quot;ID of product to delete&quot;, example=1)):</code></pre>
+<p>products = load_data()</p>
+<p>for p in products:</p>
+<p>if p[&quot;id&quot;] == product_id:</p>
+<p>products.remove(p)</p>
+<p>save_data(products)</p>
+<p>return {&quot;message&quot;: f&quot;Product {product_id} deleted&quot;}</p>
+<p>raise HTTPException(status_code=404, detail=&quot;Product id not found&quot;)</p>
+<p>@app.get(&quot;/products/sorted&quot;)</p>
+<p>def get_products_sorted():</p>
+<p>products = load_data()</p>
+<p>products.sort(key=lambda x: x[&quot;stock_quantity&quot;])</p>
+<p>return products</p>
+<p>@app.post(&quot;/products&quot;)</p>
+<p>def add_product(product: Product):</p>
+<p>products = load_data()</p>
+<p>if any(p[&quot;id&quot;] == product.id for p in products):</p>
+<p>raise HTTPException(status_code=402, detail=&quot;Product already exists&quot;)</p>
+<p>products.append(product.dict())</p>
+<p>save_data(products)</p>
+<p>print(&quot;Product added successfully:&quot;, product.product_name)</p>
+<p>return {&quot;message&quot;: &quot;Product added successfully&quot;, &quot;product&quot;: product}</p>
+<h3>Q71 — students.json</h3>
+<p>from fastapi import FastAPI, HTTPException, Path</p>
+<p>from pydantic import BaseModel, Field</p>
+<p>import json, os</p>
+<p>app = FastAPI()</p>
+<p>FILE = &quot;students.json&quot;</p>
+<p>def load_data():</p>
+<p>if not os.path.exists(FILE):</p>
+<p>return []</p>
+<p>with open(FILE, &quot;r&quot;) as f:</p>
+<p>return json.load(f)</p>
+<p>def save_data(data):</p>
+<p>with open(FILE, &quot;w&quot;) as f:</p>
+<p>json.dump(data, f, indent=4)</p>
+<p>class Student(BaseModel):</p>
+<p>id: int</p>
+<p>name: str = Field(..., description=&quot;Student&#x27;s name&quot;, example=&quot;Krupesh&quot;)</p>
+<p>course: str = Field(..., description=&quot;Enrolled course&quot;, example=&quot;M.Sc. CA &amp; IT&quot;)</p>
+<p>marks: int = Field(..., ge=0, le=100, description=&quot;Marks out of 100&quot;, example=82)</p>
+<p>semester: int = Field(..., ge=1, le=8, description=&quot;Current semester&quot;, example=3)</p>
+<p>@app.get(&quot;/students&quot;)</p>
+<p>def get_students():</p>
+<p>return load_data()</p>
+<p>@app.delete(&quot;/students/{student_id}&quot;)</p>
+<pre><code>def delete_student(student_id: int = Path(..., description=&quot;ID of student to delete&quot;, example=1)):</code></pre>
+<p>students = load_data()</p>
+<p>for s in students:</p>
+<p>if s[&quot;id&quot;] == student_id:</p>
+<p>students.remove(s)</p>
+<p>save_data(students)</p>
+<p>return {&quot;message&quot;: f&quot;Student {student_id} deleted&quot;}</p>
+<p>raise HTTPException(status_code=404, detail=&quot;Student not found&quot;)</p>
+<p>@app.get(&quot;/students/sorted&quot;)</p>
+<p>def get_students_sorted():</p>
+<p>students = load_data()</p>
+<p>for s in students:</p>
+<p>s[&quot;grade&quot;] = &quot;A&quot; if s[&quot;marks&quot;] &gt;= 75 else &quot;B&quot;</p>
+<p>students.sort(key=lambda x: x[&quot;marks&quot;], reverse=True)</p>
+<p>return students</p>
+<p>@app.post(&quot;/students&quot;)</p>
+<p>def add_student(student: Student):</p>
+<p>students = load_data()</p>
+<p>if any(s[&quot;id&quot;] == student.id for s in students):</p>
+<p>raise HTTPException(status_code=402, detail=&quot;Student already exists&quot;)</p>
+<p>students.append(student.dict())</p>
+<p>save_data(students)</p>
+<p>print(&quot;Student added successfully:&quot;, student.name)</p>
+<p>return {&quot;message&quot;: &quot;Student added successfully&quot;, &quot;student&quot;: student}</p>
+<h3>Q72 — recipes.json</h3>
+<p>from fastapi import FastAPI, HTTPException, Path</p>
+<p>from pydantic import BaseModel, Field</p>
+<p>import json, os</p>
+<p>app = FastAPI()</p>
+<p>FILE = &quot;recipes.json&quot;</p>
+<p>def load_data():</p>
+<p>if not os.path.exists(FILE):</p>
+<p>return []</p>
+<p>with open(FILE, &quot;r&quot;) as f:</p>
+<p>return json.load(f)</p>
+<p>def save_data(data):</p>
+<p>with open(FILE, &quot;w&quot;) as f:</p>
+<p>json.dump(data, f, indent=4)</p>
+<p>class Recipe(BaseModel):</p>
+<p>id: int</p>
+<p>recipe_name: str = Field(..., description=&quot;Name of the recipe&quot;, example=&quot;Paneer Butter Masala&quot;)</p>
+<p>cuisine: str = Field(..., description=&quot;Type of cuisine&quot;, example=&quot;Indian&quot;)</p>
+<p>prep_time: int = Field(..., gt=0, description=&quot;Prep time in minutes&quot;, example=15)</p>
+<p>cook_time: int = Field(..., gt=0, description=&quot;Cook time in minutes&quot;, example=25)</p>
+<p>@app.get(&quot;/recipes&quot;)</p>
+<p>def get_recipes():</p>
+<p>return load_data()</p>
+<p>@app.delete(&quot;/recipes/{recipe_id}&quot;)</p>
+<pre><code>def delete_recipe(recipe_id: int = Path(..., description=&quot;ID of recipe to delete&quot;, example=1)):</code></pre>
+<p>recipes = load_data()</p>
+<p>for r in recipes:</p>
+<p>if r[&quot;id&quot;] == recipe_id:</p>
+<p>recipes.remove(r)</p>
+<p>save_data(recipes)</p>
+<p>return {&quot;message&quot;: f&quot;Recipe {recipe_id} deleted&quot;}</p>
+<p>raise HTTPException(status_code=404, detail=&quot;Recipe id not found&quot;)</p>
+<p>@app.get(&quot;/recipes/sorted&quot;)</p>
+<p>def get_recipes_sorted():</p>
+<p>recipes = load_data()</p>
+<p>for r in recipes:</p>
+<p>r[&quot;total_time&quot;] = r[&quot;prep_time&quot;] + r[&quot;cook_time&quot;]</p>
+<p>recipes.sort(key=lambda x: x[&quot;total_time&quot;])</p>
+<p>return recipes</p>
+<p>@app.post(&quot;/recipes&quot;)</p>
+<p>def add_recipe(recipe: Recipe):</p>
+<p>recipes = load_data()</p>
+<p>if any(r[&quot;recipe_name&quot;] == recipe.recipe_name for r in recipes):</p>
+<p>raise HTTPException(status_code=409, detail=&quot;Recipe already exists&quot;)</p>
+<p>recipes.append(recipe.dict())</p>
+<p>save_data(recipes)</p>
+<p>print(&quot;Recipe added successfully:&quot;, recipe.recipe_name)</p>
+<p>return {&quot;message&quot;: &quot;Recipe added successfully&quot;, &quot;recipe&quot;: recipe}</p>
+<h3>Q73 — menu.json</h3>
+<p>from fastapi import FastAPI, HTTPException, Path</p>
+<p>from pydantic import BaseModel, Field</p>
+<p>import json, os</p>
+<p>app = FastAPI()</p>
+<p>FILE = &quot;menu.json&quot;</p>
+<p>def load_data():</p>
+<p>if not os.path.exists(FILE):</p>
+<p>return []</p>
+<p>with open(FILE, &quot;r&quot;) as f:</p>
+<p>return json.load(f)</p>
+<p>def save_data(data):</p>
+<p>with open(FILE, &quot;w&quot;) as f:</p>
+<p>json.dump(data, f, indent=4)</p>
+<p>class MenuItem(BaseModel):</p>
+<p>id: int</p>
+<p>item_name: str = Field(..., description=&quot;Menu item name&quot;, example=&quot;Margherita Pizza&quot;)</p>
+<p>category: str = Field(..., description=&quot;Item category&quot;, example=&quot;Main Course&quot;)</p>
+<p>price: float = Field(..., gt=0, description=&quot;Price of the item&quot;, example=249.0)</p>
+<p>is_vegetarian: bool = Field(..., description=&quot;Whether item is vegetarian&quot;, example=True)</p>
+<p>@app.get(&quot;/menu&quot;)</p>
+<p>def get_menu():</p>
+<p>return load_data()</p>
+<p>@app.delete(&quot;/menu/{item_id}&quot;)</p>
+<pre><code>def delete_item(item_id: int = Path(..., description=&quot;ID of menu item to delete&quot;, example=1)):</code></pre>
+<p>menu = load_data()</p>
+<p>for m in menu:</p>
+<p>if m[&quot;id&quot;] == item_id:</p>
+<p>menu.remove(m)</p>
+<p>save_data(menu)</p>
+<p>return {&quot;message&quot;: f&quot;Menu item {item_id} deleted&quot;}</p>
+<p>raise HTTPException(status_code=404, detail=&quot;Menu item not found&quot;)</p>
+<p>@app.get(&quot;/menu/sorted&quot;)</p>
+<p>def get_menu_sorted():</p>
+<p>menu = load_data()</p>
+<p>menu.sort(key=lambda x: x[&quot;price&quot;])</p>
+<p>return menu</p>
+<p>@app.post(&quot;/menu&quot;)</p>
+<p>def add_item(item: MenuItem):</p>
+<p>menu = load_data()</p>
+<p>if any(m[&quot;id&quot;] == item.id for m in menu):</p>
+<p>raise HTTPException(status_code=409, detail=&quot;Menu item already exists&quot;)</p>
+<p>menu.append(item.dict())</p>
+<p>save_data(menu)</p>
+<p>print(&quot;Menu item added successfully:&quot;, item.item_name)</p>
+<p>return {&quot;message&quot;: &quot;Menu item added successfully&quot;, &quot;item&quot;: item}</p>
+<h2>Quick Pre-Exam Checklist</h2>
+<p>Can create + activate a venv from scratch (Q7, Q9, Q29)</p>
+<p>Can install packages with version pinning/ranges (Q23-25)</p>
+<p>Can write the pickle+joblib block from memory (Topic 2 skeleton)</p>
+<pre><code>Can set up git remote + push/pull cycle end-to-end (Q41, Q44, Q52, Q53, Q57)</code></pre>
+<p>Can write one full FastAPI CRUD file from scratch without looking (books.json) and verify it in /docs</p>
+<div class="table-wrap"><table><tr><th>#</th><th>Question</th><th>Answer</th></tr><tr><td>1</td><td>Check Python version</td><td>python --version</td></tr><tr><td>2</td><td>Path of active Python executable</td><td>where python (Win) / which python (Mac/Linux)</td></tr><tr><td>3</td><td>Show current working directory</td><td>cd (Win CMD, no args) / pwd (Mac/Linux)</td></tr><tr><td>4</td><td>Move into <code>my_project</code> folder</td><td>cd my_project</td></tr><tr><td>5</td><td>Move one level up</td><td>cd ..</td></tr><tr><td>6</td><td>List files/folders in current directory</td><td>dir (Win) / ls (Mac/Linux)</td></tr><tr><td>7</td><td>Create venv named <code>venv</code></td><td>python -m venv venv</td></tr><tr><td>8</td><td>Create venv with custom name <code>myenv</code></td><td>python -m venv myenv</td></tr><tr><td>9</td><td>Activate <code>venv</code> on CMD</td><td>venv\Scripts\activate.bat</td></tr><tr><td>10</td><td>Confirm Python is running from inside venv</td><td>where python (path should point inside venv folder)</td></tr><tr><td>11</td><td>Check pip version</td><td>pip --version</td></tr><tr><td>12</td><td>Upgrade pip to latest</td><td>python -m pip install --upgrade pip</td></tr><tr><td>13</td><td>Generic install command</td><td>pip install &lt;package_name&gt;</td></tr><tr><td>14</td><td>Install numpy, pandas, matplotlib together</td><td>pip install numpy pandas matplotlib</td></tr><tr><td>15</td><td>Install numpy, pandas, matplotlib, scikit-learn</td><td>pip install numpy pandas matplotlib scikit-learn</td></tr><tr><td>16</td><td>Install TensorFlow</td><td>pip install tensorflow</td></tr><tr><td>17</td><td>Install FastAPI with sub-libraries</td><td>pip install &quot;fastapi[standard]&quot;</td></tr><tr><td>18</td><td>List all installed packages</td><td>pip list</td></tr><tr><td>19</td><td>Detailed info about numpy</td><td>pip show numpy</td></tr><tr><td>20</td><td>Check which packages have updates available</td><td>pip list --outdated</td></tr><tr><td>21</td><td>Upgrade numpy to latest</td><td>pip install --upgrade numpy</td></tr><tr><td>22</td><td>Uninstall numpy</td><td>pip uninstall numpy</td></tr><tr><td>23</td><td>Install exactly numpy 2.0.0</td><td>pip install numpy==2.0.0</td></tr><tr><td>24</td><td>Install numpy 2.0.0 or higher</td><td>pip install numpy&gt;=2.0.0</td></tr><tr><td>25</td><td>Install numpy in range 2.0.0 to &lt;3.0.0</td><td>pip install &quot;numpy&gt;=2.0.0,&lt;3.0.0&quot;</td></tr><tr><td>26</td><td>Save installed packages to requirements.txt</td><td>pip freeze &gt; requirements.txt</td></tr><tr><td>27</td><td>View contents of requirements.txt</td><td>type requirements.txt (Win) / cat requirements.txt (Mac/Linux)</td></tr><tr><td>28</td><td>Install all packages from requirements.txt</td><td>pip install -r requirements.txt</td></tr><tr><td>29</td><td>Deactivate active virtual environment</td><td>deactivate</td></tr><tr><td>30</td><td>Permanently delete the venv folder</td><td>rmdir /s /q venv (Win) / rm -rf venv (Mac/Linux)</td></tr></table></div>
+<div class="table-wrap"><table><tr><th>#</th><th>Question</th><th>Answer</th></tr><tr><td>35</td><td>Set global Git username</td><td>git config --global user.name &quot;Your Name&quot;</td></tr><tr><td>36</td><td>Set global Git email</td><td>git config --global user.email &quot;you@example.com&quot;</td></tr><tr><td>37</td><td>Unset global username</td><td>git config --global --unset user.name</td></tr><tr><td>38</td><td>Unset global email</td><td>git config --global --unset user.email</td></tr><tr><td>39</td><td>View all Git config settings</td><td>git config --list</td></tr><tr><td>40</td><td>Check username configured for current repo</td><td>git config user.name</td></tr><tr><td>41</td><td>Initialize new Git repo</td><td>git init</td></tr><tr><td>42</td><td>Clone a repository from GitHub</td><td>git clone &lt;repo-url&gt;</td></tr><tr><td>43</td><td>Clone into a custom-named folder</td><td>git clone &lt;repo-url&gt; custom-folder-name</td></tr><tr><td>44</td><td>Link local repo to remote <code>origin</code></td><td>git remote add origin &lt;repo-url&gt;</td></tr><tr><td>45</td><td>View remote URLs linked to repo</td><td>git remote -v</td></tr><tr><td>46</td><td>Remove remote named <code>origin</code></td><td>git remote remove origin</td></tr><tr><td>47</td><td>Check status of working directory</td><td>git status</td></tr><tr><td>48</td><td>View commit history</td><td>git log</td></tr><tr><td>49</td><td>View commit history with code changes</td><td>git log -p</td></tr><tr><td>50</td><td>Stage a specific file</td><td>git add &lt;filename&gt;</td></tr><tr><td>51</td><td>Stage all changed files</td><td>git add .</td></tr><tr><td>52</td><td>Commit staged changes with message</td><td>git commit -m &quot;your message&quot;</td></tr><tr><td>53</td><td>Push committed changes to a branch on origin</td><td>git push origin &lt;branch-name&gt;</td></tr><tr><td>54</td><td>Push a branch and set it to track remote</td><td>git push -u origin &lt;branch-name&gt;</td></tr><tr><td>55</td><td>Push to a remote branch already tracked</td><td>git push</td></tr><tr><td>56</td><td>Push all local branches at once</td><td>git push --all</td></tr><tr><td>57</td><td>Pull changes from a specified remote branch</td><td>git pull origin &lt;branch-name&gt;</td></tr><tr><td>58</td><td>List all local branches</td><td>git branch</td></tr><tr><td>59</td><td>List all branches (local + remote)</td><td>git branch -a</td></tr><tr><td>60</td><td>Create a new branch without switching</td><td>git branch &lt;branch-name&gt;</td></tr><tr><td>61</td><td>Delete an already-merged branch</td><td>git branch -d &lt;branch-name&gt;</td></tr><tr><td>62</td><td>Force-delete branch with unmerged changes</td><td>git branch -D &lt;branch-name&gt;</td></tr><tr><td>63</td><td>Rename current branch</td><td>git branch -m &lt;new-name&gt;</td></tr><tr><td>64</td><td>Switch to an existing branch</td><td>git checkout &lt;branch-name&gt;</td></tr></table></div></main></div>
+<footer>Study resource · Cloud-Based Application Deployment, API &amp; Microservices</footer>
+<script>
+const main=document.querySelector('main'),nav=document.querySelector('#nav');
+[...main.querySelectorAll('h2,h3')].forEach((h,i)=>{if(!h.id)h.id='section-'+i;const a=document.createElement('a');a.href='#'+h.id;a.textContent=h.textContent;nav.appendChild(a)});
+document.querySelector('#search').addEventListener('input',e=>{const q=e.target.value.toLowerCase();main.querySelectorAll('p,h1,h2,h3,pre,table,.table-wrap').forEach(el=>{el.style.display=(!q||el.textContent.toLowerCase().includes(q))?'':'none'})});
+</script></body></html>
